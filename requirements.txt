@@ -1,0 +1,9 @@
+setuptools
+pybind11
+torch
+gym
+numpy
+scipy
+psutil
+py-cpuinfo
+datasets

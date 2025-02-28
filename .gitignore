@@ -1,0 +1,34 @@
+# Python and virtual environment
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+.env/
+
+# Build and distribution
+build/
+dist/
+*.egg-info/
+
+# Compiled Python extensions
+*.cp311-win_amd64.pyd
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+
+# Logs and temporary files
+*.log
+*.tmp
+*.cache
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Dataset and large files (if any)
+*.csv
+*.json
+*.parquet
