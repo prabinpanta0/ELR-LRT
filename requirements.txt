@@ -1,9 +1,8 @@
 setuptools
 pybind11
-torch
+wheel
 gym
 numpy
 scipy
 psutil
-py-cpuinfo
-datasets
+
