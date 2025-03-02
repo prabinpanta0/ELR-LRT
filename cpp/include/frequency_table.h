@@ -25,6 +25,9 @@ private:
     // Private implementation details
     std::unordered_map<std::string, int> frequencies;
     int total_count;
+    
+    // Added data member for update and get_counts
+    std::unordered_map<std::string, std::array<int, 256>> freq_table;
 };
 
 #endif // FREQUENCY_TABLE_H
