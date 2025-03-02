@@ -3,13 +3,20 @@
 
 #include <unordered_map>
 #include <string>
+#include <array>
+#include <cstdint>
 
 class FrequencyTable {
 public:
     FrequencyTable();
     ~FrequencyTable();
     
-    // Add your frequency table methods here
+    // Added declarations:
+    void update(const std::string& context, uint8_t next_byte);
+    std::array<int, 256> get_counts(const std::string& context) const;
+    float compute_entropy(const std::string& context) const;
+    
+    // Existing methods
     void add_sequence(const std::string& sequence);
     double get_frequency(const std::string& pattern) const;
     void clear();
