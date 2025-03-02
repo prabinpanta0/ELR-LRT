@@ -125,4 +125,9 @@ For more details, refer to:
 - `patcher.cpp`
 
 Happy coding!
+```
+  (\(\
+  (=':')
+  (,(")(")
+```
 
