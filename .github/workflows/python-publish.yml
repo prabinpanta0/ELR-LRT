@@ -28,9 +28,8 @@ jobs:
         run: |
           # Build source distribution
           python setup.py sdist
-          
-          # Build wheel
-          python setup.py bdist_wheel
+          # Build wheel with manylinux tag to satisfy PyPI
+          python setup.py bdist_wheel --plat-name manylinux_2_17_x86_64
 
       - name: Upload distributions
         uses: actions/upload-artifact@v4
