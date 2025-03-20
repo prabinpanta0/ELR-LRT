@@ -3,7 +3,7 @@ import os
 import sys
 
 # Version should match the one in pyproject.toml
-VERSION = "0.1.5"
+VERSION = "0.1.6"
 
 try:
     from pybind11.setup_helpers import Pybind11Extension, build_ext
