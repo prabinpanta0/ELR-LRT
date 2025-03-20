@@ -1,7 +1,7 @@
-#include "patcher.h"
+#include "patcher.h"  // Changed from relative path if needed
 #include <string>
 #include <vector>
-#include <frequency_table.h>
+#include "frequency_table.h"  // Changed from relative path if needed
 
 std::vector<std::vector<uint8_t>> patch_sequence(const std::vector<uint8_t>& bytes, int k, float theta, float theta_r) {
     FrequencyTable freq_table;

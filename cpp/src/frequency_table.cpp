@@ -1,4 +1,4 @@
-#include "../include/frequency_table.h"
+#include "frequency_table.h"  // Changed from "../include/frequency_table.h"
 #include <cmath>
 #include <cstdint>
 

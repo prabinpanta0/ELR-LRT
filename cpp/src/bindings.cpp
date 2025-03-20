@@ -1,7 +1,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
-#include "../include/patcher.h"
-#include "../include/frequency_table.h"
+#include "patcher.h"
+#include "frequency_table.h"
 
 namespace py = pybind11;
 

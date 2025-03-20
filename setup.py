@@ -15,10 +15,10 @@ ext_modules = [
             "cpp/src/patcher.cpp", 
             "cpp/src/bindings.cpp"
         ],
-        include_dirs=[include_dir],
+        include_dirs=[include_dir, "cpp/include"],  # Added both absolute and relative path
         cxx_std=17,
         extra_compile_args=["-fvisibility=hidden"],
-        define_macros=[("VERSION_INFO", "0.1.2")]
+        define_macros=[("VERSION_INFO", "0.1.3")]  # Updated version
     ),
 ]
 
