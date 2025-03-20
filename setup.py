@@ -25,7 +25,7 @@ ext_modules = [
 # Version should match the one in pyproject.toml
 setup(
     name="elr_lrt",
-    version="0.1.3", 
+    version="0.1.4", 
     description="ELR-LRT sequence analysis package",
     author="Prabin Panta",
     author_email="pantaprabin30@gmail.com",
