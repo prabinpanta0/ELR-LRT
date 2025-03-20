@@ -1,3 +1,24 @@
 [build-system]
-requires = ["setuptools", "wheel", "pybind11"]
+requires = ["setuptools>=42", "wheel", "pybind11>=2.6.0"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "elr-lrt"
+version = "0.1"
+description = "ELR LRT Python package"
+authors = [
+    {name = "PrabinPanta0", email = "pantaprabin30@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "pybind11>=2.6.0",
+]
+
+[tool.setuptools]
+packages = ["elr_lrt"]
