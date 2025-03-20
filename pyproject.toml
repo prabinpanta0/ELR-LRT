@@ -9,7 +9,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "elr-lrt"
-version = "0.1.4"
+version = "0.1.5"
 description = "ELR LRT Python package"
 authors = [
     {name = "PrabinPanta0", email = "pantaprabin30@gmail.com"}

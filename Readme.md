@@ -50,21 +50,51 @@ elr_lrt_project/
 
 ## Installation
 
-1. **Clone the Repository**  
+1. **Direct Installation from PyPI**  
+   The simplest way to install (if pre-built wheels are available for your platform):
+   ```sh
+   pip install elr-lrt
+   ```
+
+2. **Installation Requirements for Building from Source**  
+   If pip downloads the source distribution and tries to build it, you'll need:
+   - C++ compiler (GCC, Clang, MSVC)
+   - Python development headers
+   - pybind11
+
+   On Ubuntu/Debian:
+   ```sh
+   sudo apt-get install build-essential python3-dev
+   pip install pybind11
+   ```
+
+   On CentOS/RHEL:
+   ```sh
+   sudo yum install gcc-c++ python3-devel
+   pip install pybind11
+   ```
+
+   On Windows with MSVC:
+   ```sh
+   pip install pybind11
+   ```
+   (Requires Visual Studio with C++ support)
+
+3. **Clone the Repository**  
    Clone the project to your local machine:
    ```sh
    git clone https://github.com/prabinpanta0/ELR-LRT.git
    cd elr-lrt
    ```
 
-2. **Install Dependencies**  
+4. **Install Dependencies**  
    Install the necessary dependencies using the provided `requirements.txt`:
    ```sh
    python -m pip install --upgrade pip
    python -m pip install -r requirements.txt
    ```
 
-3. **Build the Project**  
+5. **Build the Project**  
    Compile and build the package using `setup.py`:
    ```sh
    python setup.py build
@@ -129,5 +159,4 @@ Happy coding!
   (\(\
   (=':')
   (,(")(")
-```
 
