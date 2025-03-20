@@ -1,5 +1,10 @@
 [build-system]
-requires = ["setuptools>=42", "wheel", "pybind11>=2.6.0"]
+requires = [
+    "setuptools>=42",
+    "wheel>=0.36.0",
+    "pybind11>=2.6.0",
+    "oldest-supported-numpy",
+]
 build-backend = "setuptools.build_meta"
 
 [project]
