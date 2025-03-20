@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "elr-lrt"
-version = "0.1.1"  # Updated from 0.1 to 0.1.1
+version = "0.1.2"
 description = "ELR LRT Python package"
 authors = [
     {name = "PrabinPanta0", email = "pantaprabin30@gmail.com"}
@@ -22,3 +22,10 @@ dependencies = [
 
 [tool.setuptools]
 packages = ["elr_lrt"]
+
+[tool.setuptools.bdist_wheel]
+universal = true
+
+[project.urls]
+"Homepage" = "https://github.com/PrabinPanta0/elr-lrt"
+"Bug Tracker" = "https://github.com/PrabinPanta0/elr-lrt/issues"
