@@ -10,9 +10,10 @@ ext_modules = [
     ),
 ]
 
+# Version should match the one in pyproject.toml
 setup(
     name="elr_lrt",
-    version="0.1",
+    version="0.1.2",  # Updated to match pyproject.toml
     description="ELR-LRT sequence analysis package",
     author="Prabin Panta",
     author_email="pantaprabin30@gmail.com",
@@ -20,15 +21,10 @@ setup(
     package_dir={"": "python"},
     ext_modules=ext_modules,
     cmdclass={"build_ext": build_ext},
-    classifiers=[
-        "Programming Language :: Python :: 3",
-        "Programming Language :: C++",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-    ],
-    python_requires='>=3.6',
+    # Other configuration like classifiers and dependencies are handled by pyproject.toml
+    python_requires='>=3.7',  # Updated to match pyproject.toml
     install_requires=[
-        'pybind11',
+        'pybind11>=2.6.0',  # Updated to match dependency in pyproject.toml
     ],
     entry_points={
         'console_scripts': [

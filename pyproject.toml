@@ -23,9 +23,6 @@ dependencies = [
 [tool.setuptools]
 packages = ["elr_lrt"]
 
-[tool.setuptools.bdist_wheel]
-universal = true
-
 [project.urls]
 "Homepage" = "https://github.com/PrabinPanta0/elr-lrt"
 "Bug Tracker" = "https://github.com/PrabinPanta0/elr-lrt/issues"
