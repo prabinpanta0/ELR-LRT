@@ -35,13 +35,18 @@ jobs:
           CIBW_SKIP: "*-musllinux_*"
           CIBW_BEFORE_BUILD: "pip install pybind11 numpy"
 
-      - name: Upload distributions
+      # Upload source distribution and wheels as separate artifacts
+      - name: Upload source distribution
         uses: actions/upload-artifact@v4
         with:
-          name: release-dists
-          path: |
-            dist/*.tar.gz
-            wheelhouse/*.whl
+          name: source-dist
+          path: dist/*.tar.gz
+
+      - name: Upload wheels
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheel-dist
+          path: wheelhouse/*.whl
 
   pypi-publish:
     runs-on: ubuntu-latest
@@ -50,10 +55,23 @@ jobs:
     environment:
       name: pypi
     steps:
-      - uses: actions/download-artifact@v4
+      # Download source distribution to dist directory
+      - name: Download source distribution
+        uses: actions/download-artifact@v4
         with:
-          name: release-dists
+          name: source-dist
           path: dist/
+
+      # Download wheels to dist directory
+      - name: Download wheels
+        uses: actions/download-artifact@v4
+        with:
+          name: wheel-dist
+          path: dist/
+
+      # List the contents of dist to verify files are present
+      - name: List distribution files
+        run: ls -la dist/
 
       - name: Publish release distributions to PyPI using twine
         env:
