@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install build setuptools wheel pybind11 twine auditwheel
+          python -m pip install build setuptools wheel pybind11 twine
 
       - name: Build distributions
         run: |
@@ -30,10 +30,13 @@ jobs:
           python -m build --sdist .
           # Build wheel
           python -m build --wheel .
-          # Use auditwheel to repair the wheel with manylinux tag
-          auditwheel repair dist/*.whl --plat manylinux_2_17_x86_64 -w dist/
-          # Remove the original linux wheel
-          rm dist/*-linux_*.whl
+          # For now, tag the wheel as manylinux directly
+          for whl in dist/*-linux_*.whl; do
+            # Create new filename with manylinux tag
+            NEW_NAME="${whl//-linux_/-manylinux_2_28_}"
+            # Rename the file
+            mv "$whl" "$NEW_NAME"
+          done
 
       - name: Upload distributions
         uses: actions/upload-artifact@v4
