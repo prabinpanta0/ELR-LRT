@@ -8,6 +8,12 @@ namespace py = pybind11;
 PYBIND11_MODULE(dbpm, m) {
     m.doc() = "ELR-LRT sequence patching module";
     
+    // First expose the free function since that's what we actually implemented
+    m.def("patch_sequence", &patch_sequence,
+          "Divide a sequence into patches based on entropy thresholds",
+          py::arg("bytes"), py::arg("k"), py::arg("theta"), py::arg("theta_r"));
+    
+    // Keep these to avoid breaking the binary compatibility, but they're not used
     py::class_<Patcher>(m, "Patcher")
         .def(py::init<>())
         .def("patch_sequence", &Patcher::patch_sequence)

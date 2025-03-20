@@ -1,8 +1,33 @@
-#include "patcher.h"  // Changed from relative path if needed
+#include "patcher.h"
 #include <string>
 #include <vector>
-#include "frequency_table.h"  // Changed from relative path if needed
+#include "frequency_table.h"
 
+// Constructor
+Patcher::Patcher() {}
+
+// Destructor
+Patcher::~Patcher() {}
+
+// Implement the missing methods to avoid undefined symbols
+void Patcher::patch_sequence(const std::string& sequence, std::vector<int>& positions) {
+    // Stub implementation - not actually used in the Python code
+    original_sequence = sequence;
+    patched_sequence = sequence;
+}
+
+std::string Patcher::get_patched_sequence() const {
+    // Stub implementation - not actually used in the Python code
+    return patched_sequence;
+}
+
+void Patcher::reset() {
+    // Stub implementation - not actually used in the Python code
+    original_sequence.clear();
+    patched_sequence.clear();
+}
+
+// This is the function that's actually used from Python
 std::vector<std::vector<uint8_t>> patch_sequence(const std::vector<uint8_t>& bytes, int k, float theta, float theta_r) {
     FrequencyTable freq_table;
     for (size_t i = k; i < bytes.size(); ++i) {
