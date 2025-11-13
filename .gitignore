@@ -10,6 +10,7 @@ __pycache__/
 build/
 dist/
 *.egg-info/
+*.egg-info
 
 # Compiled Python extensions
 *.cp311-win_amd64.pyd

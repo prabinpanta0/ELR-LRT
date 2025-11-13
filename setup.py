@@ -47,10 +47,7 @@ setup(
     python_requires='>=3.7',
     install_requires=[
         'pybind11>=2.6.0',
+        'torch>=2.0.0',
+        'numpy>=1.20.0',
     ],
-    entry_points={
-        'console_scripts': [
-            'elr-lrt=elr_lrt:main',
-        ],
-    },
 )
