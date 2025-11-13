@@ -45,9 +45,4 @@ setup(
     ext_modules=ext_modules,
     cmdclass=cmdclass,
     python_requires='>=3.7',
-    install_requires=[
-        'pybind11>=2.6.0',
-        'torch>=2.0.0',
-        'numpy>=1.20.0',
-    ],
 )

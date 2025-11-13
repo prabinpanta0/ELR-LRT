@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 from elr_lrt import patch_sequence
-import numpy as np
 
 class ELRLRTModel(nn.Module):
     """
@@ -40,13 +39,29 @@ class ELRLRTModel(nn.Module):
         self.output_layer = nn.Linear(d_model, vocab_size)
         
     def patch_input(self, byte_seq):
-        """Apply dynamic byte patching."""
+        """
+        Apply dynamic byte patching to input sequence.
+        
+        Args:
+            byte_seq: Input byte sequence (torch.Tensor or list)
+            
+        Returns:
+            List of byte patches segmented based on entropy thresholds
+        """
         byte_list = byte_seq.tolist() if isinstance(byte_seq, torch.Tensor) else byte_seq
         patches = patch_sequence(byte_list, self.k, self.theta, self.theta_r)
         return patches
     
     def encode_patches(self, patches):
-        """Encode patches into latent representations using mean pooling."""
+        """
+        Encode patches into latent representations using mean pooling.
+        
+        Args:
+            patches: List of byte patches from patch_input()
+            
+        Returns:
+            torch.Tensor: Stacked patch embeddings of shape [num_patches, d_model]
+        """
         patch_embeddings = []
         for patch in patches:
             emb = self.byte_embedding(torch.tensor(patch))
@@ -56,8 +71,13 @@ class ELRLRTModel(nn.Module):
     
     def gate_function(self, h_t):
         """
-        Gating mechanism for CLRM.
-        Returns a float tensor (1 if norm exceeds threshold, else 0).
+        Gating mechanism for CLRM (Continuous Latent Reasoning Module).
+        
+        Args:
+            h_t: Hidden state tensor
+            
+        Returns:
+            torch.Tensor: Float tensor (1.0 if norm exceeds threshold tau, else 0.0)
         """
         norm = torch.norm(h_t, p=2, dim=-1)
         return (norm > self.tau).float()
@@ -65,7 +85,13 @@ class ELRLRTModel(nn.Module):
     def forward(self, input_bytes, target=None):
         """
         Forward pass with dynamic byte patching and continuous latent reasoning.
-        Processes input bytes to produce output logits without additional customization.
+        
+        Args:
+            input_bytes: Input byte sequence tensor
+            target: Optional target tensor (unused in forward pass)
+            
+        Returns:
+            torch.Tensor: Output logits of shape [num_patches, vocab_size]
         """
         # Step 1: Dynamic Byte Patching
         patches = self.patch_input(input_bytes)
@@ -94,8 +120,15 @@ class ELRLRTModel(nn.Module):
         """
         Fine-tuning with supervised cross-entropy loss using a fixed AdamW optimizer.
         
-        The defaults here are chosen for a plug-and-play experience. Users can update the optimizer
-        or hyperparameters if needed, but in production these defaults should be sufficient.
+        Args:
+            input_bytes: Input byte sequence tensor
+            target_bytes: Target byte sequence tensor
+            num_iterations: Number of training iterations (default: 10)
+            
+        Note:
+            The defaults are chosen for a plug-and-play experience. Users can update
+            the optimizer or hyperparameters if needed, but these defaults should be
+            sufficient for most production use cases.
         """
         optimizer = torch.optim.AdamW(self.parameters(), lr=0.001)
         criterion = nn.CrossEntropyLoss()
