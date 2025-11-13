@@ -30,7 +30,7 @@ void Patcher::reset() {
 // This is the function that's actually used from Python
 std::vector<std::vector<uint8_t>> patch_sequence(const std::vector<uint8_t>& bytes, int k, float theta, float theta_r) {
     FrequencyTable freq_table;
-    for (size_t i = k; i < bytes.size(); ++i) {
+    for (size_t i = static_cast<size_t>(k); i < bytes.size(); ++i) {
         std::string context(bytes.begin() + i - k, bytes.begin() + i);
         freq_table.update(context, bytes[i]);
     }
@@ -40,7 +40,7 @@ std::vector<std::vector<uint8_t>> patch_sequence(const std::vector<uint8_t>& byt
     float prev_entropy = 0;
     for (size_t i = 0; i < bytes.size(); ++i) {
         current_patch.push_back(bytes[i]);
-        if (i >= k) {
+        if (i >= static_cast<size_t>(k)) {
             std::string context(bytes.begin() + i - k, bytes.begin() + i);
             float entropy = freq_table.compute_entropy(context);
             float delta_entropy = entropy - prev_entropy;

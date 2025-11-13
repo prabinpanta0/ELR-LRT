@@ -45,12 +45,4 @@ setup(
     ext_modules=ext_modules,
     cmdclass=cmdclass,
     python_requires='>=3.7',
-    install_requires=[
-        'pybind11>=2.6.0',
-    ],
-    entry_points={
-        'console_scripts': [
-            'elr-lrt=elr_lrt:main',
-        ],
-    },
 )
